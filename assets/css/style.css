@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Poppins:ital,wght@0,700;1,400;1,700;1,800&display=swap');
+
+:root {
+    --White: hsl(0, 0%, 100%);
+    --Off-white: hsl(0, 0%, 94%);
+    --Light-grey: hsl(0, 0%, 86%);
+    --Smokey-grey: hsl(0, 1%, 44%);
+    --Off-black: hsl(0, 0%, 8%);
+    --Purple: hsl(259, 100%, 65%);
+    --Light-red: hsl(0, 100%, 67%);
+    --font-family: 'Poppins';
+    --font-reg: 400;
+    --font-bold: 700;
+    --font-bold-italic: 800;
+
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Off-white);
+    font-family: var(--font-family);
+}
+
+/* card */
+
+.card {
+    background-color: var(--White);
+    border-radius: 5px 5px 100px 5px;
+}
+
+.card-bottom{
+    margin: 30px 20px;
+}
+
+.results-container{
+    padding: 5px;
+}
+
+/* form */
+.form-top {
+    margin: 30px 30px;
+    display: flex;
+}
+
+label{
+    color: var(--Smokey-grey);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.error-message,
+.invalid-data-error{
+    color: var(--Light-red) !important;
+}
+
+.error-message{
+    font-size: 10px;
+    font-weight: 400;
+    font-style: italic;
+    padding: 5px 0;
+}
+
+
+input{
+    height: 40px;
+    width: 100px;
+}
+
+.input-error{
+    border: 1px solid var(--Light-red);
+}
+
+input:focus{
+    outline: none;
+    border: 1px solid var(--Purple);
+}
+
+input::placeholder {
+    font-family: var(--font-family);
+    color: var(--Off-black);
+}
+
+input[type='number'] {
+    color:var(--Off-black);
+    line-height: 30px;
+    font-family: var(--font-family);
+    font-size: 32px;
+    padding: 5px;
+}
+
+label,
+input{
+    margin-left: 15px;
+}
+
+#day-input,
+#day {
+    margin-left: 0px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.input-field{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 30px 0 30px;
+}
+
+hr {
+    width: 450px;
+    height: 1px;
+    
+    
+}
+
+.submit-btn {
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    border: none;
+    background-color: var(--Purple);
+}
+
+.submit-btn:hover{
+    background-color: var(--Off-black)
+}
+
+.submit-btn:active{
+    background-color: var(--Purple);
+}
+
+#btn-svg {
+    padding: 5px;
+    height: 30px;
+}
+
+/* card bottom */
+
+.results-container,
+.result {
+    font-weight: var(--font-bold-italic);
+    font-style: italic;
+    font-size: 50px;
+}
+
+.result {
+    color: var(--Purple)
+}
+
+
+
+
+
