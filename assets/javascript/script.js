@@ -2,6 +2,7 @@ const form = document.getElementById('date-of-birth-input');
 const errorMessages = document.getElementsByClassName('error-message');
 const labels = document.getElementsByClassName('labels');
 const inputs = document.getElementsByClassName('input');
+const currentDate = new Date();
 
 
 const formSubmit = (event) => {
@@ -11,8 +12,7 @@ const formSubmit = (event) => {
     const dateOfBirthDay = document.getElementById('day').value;
     const dateOfBirthMonth = document.getElementById('month').value;
     const dateOfBirthYear = document.getElementById('year').value;
-
-    const dateOfBirth =  new Date(dateOfBirthYear + "-" +dateOfBirthMonth + "-" + dateOfBirthDay)
+    const dateOfBirth =  new Date(dateOfBirthYear + "-" + dateOfBirthMonth  + "-" + dateOfBirthDay)
 
     // Form validation 
      
@@ -44,32 +44,63 @@ const formSubmit = (event) => {
             inputs[i].classList.add('input-error');
         }
     } else {
-        calculateAge(dateOfBirthYear,dateOfBirthMonth,dateOfBirthDay)
+        calculateAge(dateOfBirth)
     }
     }
+    
+    const isValidDate = (year, month, day) => {
+        const currentDate = new Date(year, (month -1 ),day);
+        if (currentDate.getFullYear() == parseInt(year) && (currentDate.getMonth() + 1 )== parseInt(month) && currentDate.getDate() == parseInt(day)) {
+            return true;
+        }
+        return false;
+    }
+    
+    const resetFormValidation = () => {
+        for(let i = 0; i < errorMessages.length; i++){
+            errorMessages[i].innerHTML = '';
+            labels[i].classList.remove('invalid-data-error');
+            inputs[i].classList.remove('input-error');
+        }
+    }
+    
+    const calculateAge = (dateOfBirth) =>{
+        const currentDate = new Date();
+        const ageInMilliseconds = currentDate - dateOfBirth;
 
+        // Convert milliseconds to years
+        const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
 
+        // Calculate the remaining months and days
+        const years = Math.floor(ageInYears);
+        const months = Math.floor((ageInYears - years) * 12);
+        const days = Math.floor((ageInYears * 365.25) % 30.4375);
+
+        displayAge(years, months, days)
+    }
+    
+    const displayAge = (year, month, day) => {
+        const resultsDisplays = document.querySelectorAll('.result')
+        
+        document.getElementById('year-result').setAttribute('data-age', year)
+        document.getElementById('month-result').setAttribute('data-age', month)
+        document.getElementById('day-result').setAttribute('data-age', day)
+        
+        let interval = 1000;
+ 
+        resultsDisplays.forEach((resultDisplay) => {
+            let startValue = -1
+            let endValue = parseInt(resultDisplay.getAttribute('data-age'))
+            let duration = Math.floor(interval / endValue)
+            let counter = setInterval(function () {
+                startValue += 1
+                resultDisplay.textContent = startValue
+                if(startValue == endValue || endValue == '0'){
+                    clearInterval(counter)
+                }
+            },duration)
+        });
+    }
+    
+    
 form.addEventListener('submit', formSubmit)
-
-
-// Functions 
-
-const isValidDate = (year, month, day) => {
-    var d = new Date(year, month -1, day);
-    if (d.getFullYear() == parseInt(year) && d.getMonth() +1 == parseInt(month) && d.getDate() == parseInt(day)) {
-        return true;
-    }
-    return false;
-}
-
-const resetFormValidation = () => {
-    for(let i = 0; i < errorMessages.length; i++){
-        errorMessages[i].innerHTML = '';
-        labels[i].classList.remove('invalid-data-error');
-        inputs[i].classList.remove('input-error');
-    }
-}
-
-const calculateAge = (year, month, day) =>{
-    console.log(day,month,year)
-}
