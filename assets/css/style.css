@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Poppins:ital,wght@0,700;1,400;1,700;1,800&display=swap');
 
+*{
+    padding: 0;
+    margin: 0;
+}
 :root {
     --White: hsl(0, 0%, 100%);
     --Off-white: hsl(0, 0%, 94%);
@@ -16,6 +20,7 @@
 }
 
 body{
+    font-family: var(--font-family);
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -25,118 +30,49 @@ body{
     font-family: var(--font-family);
 }
 
-/* card */
-
-.card {
+.card{
     background-color: var(--White);
-    border-radius: 5px 5px 100px 5px;
+    border-radius: 15px 15px 100px 15px;
+}
+
+.card-container{
+    margin: 30px;
 }
 
 .card-bottom{
-    margin: 30px 20px;
+   margin: 30px 0;
 }
 
-.results-container{
-    padding: 5px;
-}
-
-/* form */
-.form-top {
-    margin: 30px 30px;
+.form-container {
+    height: 130px;
     display: flex;
-}
+    column-gap: 10px;
+    justify-content: space-around;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--Light-grey);
+ }
 
-label{
-    color: var(--Smokey-grey);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 12px;
-    margin-bottom: 5px;
-}
+ 
+ #btn-svg {
+     padding: 5px;
+     height: 25px;
+ }
 
-.error-message,
-.invalid-data-error{
-    color: var(--Light-red) !important;
-}
-
-.error-message{
-    font-size: 10px;
-    font-weight: 400;
-    font-style: italic;
-    padding: 5px 0;
-}
-
-input{
-    height: 40px;
-    width: 120px;
-}
-
-.input-error{
-    border: 1px solid var(--Light-red);
-}
-
-input:focus{
-    outline: none;
-    border: 1px solid var(--Purple);
-}
-
-input::placeholder {
-    font-family: var(--font-family);
-    color: var(--Off-black);
-}
-
-input[type='number'] {
-    color:var(--Off-black);
-    line-height: 30px;
-    font-family: var(--font-family);
-    font-size: 32px;
-    padding: 15px;
-}
-
-label,
-input{
-    margin-left: 15px;
-}
-
-#day-input,
-#day {
-    margin-left: 0px;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
-.input-field{
-    display: flex;
-    flex-direction: column;
-}
-
-.form-bottom{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 30px 0 30px;
-}
-
-hr {
-    width: 600px;
-    height: 1px;
-}
-
-.submit-btn {
+ .submit-btn {
+    position: absolute;
+    display: grid;
     border-radius: 50%;
-    height: 70px;
-    width: 70px;
+    height: 50px;
+    width: 50px;
     border: none;
     background-color: var(--Purple);
+    margin-top: 105px;
+    place-items: center;
+}
+
+#btn-svg {
+    padding: 5px;
+    height: 25px;
 }
 
 .submit-btn:hover{
@@ -147,9 +83,69 @@ hr {
     background-color: var(--Purple);
 }
 
-#btn-svg {
-    padding: 5px;
-    height: 30px;
+label{
+    color: var(--Smokey-grey);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.input-field{
+    width: 33%;
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+}
+
+input {
+    width: 70px;
+    height: 35px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-error{
+    border: 1px solid var(--Light-red) !important;
+}
+
+input:focus{
+    outline: none;
+    border: 1px solid var(--Purple);
+}
+
+input::placeholder {
+    font-family: var(--font-family);
+    color: var(--Smokey-grey);
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+    color:var(--Off-black);
+    line-height: 2rem;
+    font-family: var(--font-family);
+    padding-left: 10px;
+    border: 1px solid var(--Light-grey);
+}
+
+.error-message,
+.invalid-data-error{
+    color: var(--Light-red) !important;
+}
+
+.error-message{
+    font-size: 8px;
+    font-weight: 400;
+    font-style: italic;
+    padding: 5px 0;
+}
+
+input[type='number'] {
+    font-size: 20px;
 }
 
 /* card bottom */
@@ -166,5 +162,69 @@ hr {
 
 
 
+@media only screen and (min-width: 500px) {
+    input {
+        width: 100px;
+        height: 50px;
+    }
+  }
 
+  @media only screen and (min-width: 700px) {
+    .card{
+        width: 700px;
+        column-gap: 5px;
+    }
+
+    .card-container{
+        margin: 50px;
+    }
+
+    .form-container {
+        width: 500px;
+  }
+
+
+  input {
+    width: 120px;
+    height: 60px;
+}
+
+  .submit-btn {
+    position: absolute;
+    display: grid;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    border: none;
+    background-color: var(--Purple);
+    margin-top: 95px;
+    margin-left: 600px;
+    place-items: center;
+    }
+
+    #btn-svg {
+        padding: 5px;
+        height: 40px;
+    }
+
+    .results-container{
+        font-size: 3.875rem;
+        font-weight: 800;
+     }
+
+     .result{
+        letter-spacing: 5px;
+        font-size: 4.5rem;
+     }
+
+     input[type='number'] {
+        font-size: 2rem;
+    }
+
+    .error-message{
+        font-size: 0.75rem;
+    }
+
+
+  }
 
