@@ -21,20 +21,20 @@
         <div class="form-container">
           <div class="input-field">
             <label for="day" id="day-input" class="labels">Day</label>
-            <input type="number" class="input" id="day" maxlength="2" placeholder="DD">
+            <input type="number" class="input" id="day" placeholder="DD">
             <div class="error-message"></div>
           </div>
           <div class="input-field">
             <label for="month" class="labels">Month</label>
-            <input type="number" class="input" id="month" maxlength="2" placeholder="MM">
+            <input type="number" class="input" id="month" placeholder="MM">
             <div class="error-message"></div>
           </div>
           <div class="input-field">
             <label for="year" class="labels">Year</label>
-            <input type="number" class="input" id="year" maxlength="4" placeholder="YYYY">
+            <input type="number" class="input" id="year" placeholder="YYYY">
             <div class="error-message"></div>
           </div>
-          <button type="submit" class="submit-btn" id="submit"><img src="/assets/images/icon-arrow.svg" alt=""
+          <button type="submit" role="button" class="submit-btn" id="submit"><span class="sr-only">submit</span><img src="assets/images/icon-arrow.svg" alt="submit-btn"
               id="btn-svg"></button>
         </div>
       </form>
@@ -46,8 +46,7 @@
       </div>
     </div>
   </main>
-</body>
-<script src="assets/javascript/script.js"></script>
+  <script src="assets/javascript/script.js"></script>
 </body>
 
 </html>

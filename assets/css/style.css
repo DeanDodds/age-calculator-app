@@ -160,7 +160,9 @@ input[type='number'] {
     color: var(--Purple)
 }
 
-
+.sr-only {
+    display: none;
+}
 
 @media only screen and (min-width: 500px) {
     input {
