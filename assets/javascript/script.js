@@ -4,6 +4,24 @@ const labels = document.getElementsByClassName('labels');
 const inputs = document.getElementsByClassName('input');
 const currentDate = new Date();
 
+for (let i = 0; i < inputs.length; i++) {
+    inputs[i].onkeyup = function(e) {
+        const target = e.srcElement || e.target;
+        const maxLength = parseInt(target.attributes["data-maxlength"].value, 10);
+        const myLength = target.value.length;
+        if (myLength >= maxLength) {
+            const next = inputs[i +1];
+        if (next == null) {
+            target.blur();
+            return;
+        };
+
+        if (next.tagName.toLowerCase() === "input") {
+            next.focus();
+                }
+            }
+        }
+    }
 
 const formSubmit = (event) => {
     event.preventDefault();
@@ -101,6 +119,14 @@ const formSubmit = (event) => {
             },duration)
         });
     }
+
+    const setYearMax = () => {
+        document.getElementById('year').setAttribute('max', currentDate.getFullYear());
+        console.log(parseInt(currentDate.getFullYear()))
+    }
+
+    const focusNext = (e) =>
     
-    
+
+setYearMax()
 form.addEventListener('submit', formSubmit)
