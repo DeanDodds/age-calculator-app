@@ -15,6 +15,15 @@ const formSubmit = (event) => {
     const dateOfBirth =  new Date(dateOfBirthYear + "-" + dateOfBirthMonth  + "-" + dateOfBirthDay)
 
     // Form validation 
+    if(!isValidDate(dateOfBirthYear, dateOfBirthMonth, dateOfBirthDay)) {
+        errorMessages[0].innerHTML = 'Must be valid day';
+        for(let i = 0; i < errorMessages.length; i++){
+            labels[i].classList.add('invalid-data-error');
+            inputs[i].classList.add('input-error');
+        }
+    } else {
+        calculateAge(dateOfBirth)
+    }
      
     // day validation
     if (dateOfBirthDay === '' || dateOfBirthDay > 31 ){
@@ -36,21 +45,12 @@ const formSubmit = (event) => {
         labels[2].classList.add('invalid-data-error');
         inputs[2].classList.add('input-error');
     }
-
-    if(!isValidDate(dateOfBirthYear, dateOfBirthMonth, dateOfBirthDay)) {
-        errorMessages[0].innerHTML = 'Must be valid day';
-        for(let i = 0; i < errorMessages.length; i++){
-            labels[i].classList.add('invalid-data-error');
-            inputs[i].classList.add('input-error');
-        }
-    } else {
-        calculateAge(dateOfBirth)
-    }
     }
     
     const isValidDate = (year, month, day) => {
-        const currentDate = new Date(year, (month -1 ),day);
-        if (currentDate.getFullYear() == parseInt(year) && (currentDate.getMonth() + 1 )== parseInt(month) && currentDate.getDate() == parseInt(day)) {
+        const dateOfBirthDate = new Date(year, (month -1 ),day);
+        const currentDate = new Date();
+        if (dateOfBirthDate.getFullYear() == parseInt(year) && (dateOfBirthDate.getMonth() + 1 )== parseInt(month) && dateOfBirthDate.getDate() == parseInt(day) && dateOfBirthDate < currentDate) {
             return true;
         }
         return false;
